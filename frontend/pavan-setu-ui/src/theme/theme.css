@@ -1,0 +1,17 @@
+/* DEFAULT = DARK THEME */
+:root {
+  --bg-main: #0b0f14;
+  --bg-card: #121821;
+  --text-main: #e6edf3;
+  --text-muted: #8a94a6;
+  --accent-green: #7ddc7a;
+  --accent-yellow: #ffd166;
+}
+
+/* LIGHT THEME */
+[data-theme="light"] {
+  --bg-main: #f5f7fa;
+  --bg-card: #ffffff;
+  --text-main: #0b0f14;
+  --text-muted: #5f6c7b;
+}

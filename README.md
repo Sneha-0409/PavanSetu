@@ -61,3 +61,7 @@ Install frontend libraries
 
 Run this from project root:
 pip install streamlit requests plotly
+
+12. Install dependency
+Run this inside pavan-setu-ui:
+npm install react-google-charts
