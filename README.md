@@ -38,18 +38,6 @@ pip3 install fastapi uvicorn
 
 4. Open this file
 backend/app/main.py
-
-Paste THIS code (copy exactly)
-from fastapi import FastAPI
-
-app = FastAPI(title="PAVAN SETU API")
-
-@app.get("/")
-def root():
-    return {
-        "message": "Welcome to PAVAN SETU – AI-driven Pollution Intelligence Platform"
-    }
-
 --You will see error dont worry continue further
 
 5. Run the server
@@ -59,4 +47,7 @@ uvicorn backend.app.main:app --reload
 if error then run this: source .venv/bin/activate
 then run again: uvicorn backend.app.main:app --reload
 
-6.
+6. Create this file:
+backend/app/api/aqi.py
+here this works: http://127.0.0.1:8000/api/aqi
+
