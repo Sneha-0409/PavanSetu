@@ -55,3 +55,9 @@ here this works: http://127.0.0.1:8000/api/aqi
 8. policy done
 9. Source attribution done 
 10. Backend setup complete
+
+11. Frontend - Dashboard
+Install frontend libraries
+
+Run this from project root:
+pip install streamlit requests plotly
