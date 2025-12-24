@@ -69,7 +69,21 @@
 // }
 
 import { useState } from "react";
+import { Chart } from "react-google-charts";
 import "./theme/theme.css";
+import GeminiAssistant from "./components/GeminiAssistant";
+
+
+/* AQI Trend Data */
+const aqiData = [
+  ["Hour", "AQI"],
+  ["6 AM", 180],
+  ["9 AM", 195],
+  ["12 PM", 210],
+  ["3 PM", 225],
+  ["6 PM", 215],
+  ["9 PM", 205],
+];
 
 export default function App() {
   const [theme, setTheme] = useState("dark");
@@ -110,11 +124,36 @@ export default function App() {
           <KPICard title="Main Pollutant" value="PM2.5" />
           <KPICard title="24h Forecast" value="225" />
         </div>
+
+        {/* AQI TREND GRAPH */}
+        <div style={styles.graphCard}>
+          <h3 style={{ marginBottom: "16px" }}>AQI Trend (Today)</h3>
+
+          <Chart
+            chartType="LineChart"
+            width="100%"
+            height="300px"
+            data={aqiData}
+            options={{
+              backgroundColor: "transparent",
+              legendTextStyle: { color: "var(--text-muted)" },
+              hAxis: { textStyle: { color: "var(--text-muted)" } },
+              vAxis: { textStyle: { color: "var(--text-muted)" } },
+              colors: ["#ff6b6b"],
+            }}
+          />
+        </div>
       </main>
     </div>
   );
 }
 
+{/* GEMINI AI ASSISTANT */ }
+<div style={{ marginTop: "40px" }}>
+  <GeminiAssistant />
+</div>
+
+/* Sidebar Item */
 function NavItem({ label }) {
   return (
     <div
@@ -130,6 +169,7 @@ function NavItem({ label }) {
   );
 }
 
+/* KPI Card */
 function KPICard({ title, value, status }) {
   return (
     <div style={styles.card}>
@@ -140,6 +180,7 @@ function KPICard({ title, value, status }) {
   );
 }
 
+/* Styles */
 const styles = {
   app: {
     display: "flex",
@@ -181,6 +222,13 @@ const styles = {
     padding: "20px",
     borderRadius: "16px",
     minWidth: "220px",
+    boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
+  },
+  graphCard: {
+    marginTop: "40px",
+    background: "var(--bg-card)",
+    padding: "24px",
+    borderRadius: "18px",
     boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
   },
 };
