@@ -51,3 +51,7 @@ then run again: uvicorn backend.app.main:app --reload
 backend/app/api/aqi.py
 here this works: http://127.0.0.1:8000/api/aqi
 
+7. aqi and forecast done
+8. policy done
+9. Source attribution done 
+10. Backend setup complete
