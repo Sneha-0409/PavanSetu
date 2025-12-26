@@ -1,3 +1,5 @@
+import logo from "../assets/pavansetu-logo.png";
+
 export default function Sidebar() {
     const items = [
         "Dashboard",
@@ -9,9 +11,19 @@ export default function Sidebar() {
 
     return (
         <aside style={styles.sidebar}>
-            <div style={styles.logo}>
-                🌿 <span>PAVAN SETU</span>
+            <div style={styles.logoWrapper}>
+                <div style={styles.logoContainer}>
+                    <img src={logo} alt="Pavan Setu Logo" style={styles.logoImg} />
+                </div>
+
+                <div>
+                    <h1 style={styles.logoText}>PavanSetu</h1>
+                    <p style={styles.logoTagline}>Air Quality Intelligence</p>
+                </div>
             </div>
+
+
+
 
             <nav style={styles.nav}>
                 {items.map((item) => (
@@ -27,31 +39,88 @@ export default function Sidebar() {
 const styles = {
     sidebar: {
         width: "260px",
-        minHeight: "100vh",
-        padding: "28px",
-        background: "linear-gradient(180deg, #173528, #0b1612)",
+        padding: "24px",
+        background: "rgba(20, 40, 30, 0.9)",
         backdropFilter: "blur(12px)",
-        borderRight: "1px solid rgba(255,255,255,0.08)",
-        color: "var(--text-main)",
+        color: "#fff",
     },
+
     logo: {
-        fontSize: "18px",
-        fontWeight: 600,
-        marginBottom: "40px",
         display: "flex",
         alignItems: "center",
-        gap: "8px",
+        gap: "12px",
+        fontWeight: "700",
+        fontSize: "18px",
+        marginBottom: "32px",
     },
+
+    logoWrapper: {
+        display: "flex",
+        alignItems: "center",
+        gap: "14px",
+        marginBottom: "28px",
+    },
+
+    logoContainer: {
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "flex-start",
+    },
+
+    logoCard: {
+        width: "56px",
+        height: "56px",
+        borderRadius: "16px",
+        overflow: "hidden",
+        background: "rgba(255,255,255,0.14)",
+        backdropFilter: "blur(10px)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        border: "1px solid rgba(255,255,255,0.25)",
+        boxShadow: "0 0 20px rgba(143,211,168,0.3)",
+    },
+
+    logoImg: {
+        width: "50px",      // perfect clarity size
+        height: "auto",     // preserves aspect ratio
+        objectFit: "contain",
+    },
+
+
+    logoText: {
+        margin: 0,
+        fontSize: "20px",
+        fontWeight: "700",
+        letterSpacing: "0.5px",
+        color: "#ffffff",
+    },
+
+    logoTagline: {
+        margin: 0,
+        fontSize: "11px",
+        color: "#8fd3a8",
+        letterSpacing: "0.8px",
+        textTransform: "uppercase",
+    },
+
     nav: {
         display: "flex",
         flexDirection: "column",
-        gap: "14px",
+        gap: "12px",
     },
+
+    logoBox: {
+        background: "#ffffff",
+        padding: "6px",
+        borderRadius: "10px",
+    },
+
     navItem: {
-        padding: "12px 16px",
-        borderRadius: "12px",
+        padding: "10px 14px",
+        borderRadius: "10px",
         cursor: "pointer",
-        color: "var(--text-muted)",
-        background: "rgba(255,255,255,0.04)",
+        background: "rgba(255,255,255,0.08)",
     },
 };
+

@@ -1,8 +1,8 @@
 :root {
   --bg-main: radial-gradient(
     circle at top left,
-    #1b3a2b,
-    #050a08 55%
+    #42976f,
+    #0e402e 55%
   );
   --bg-card: rgba(255, 255, 255, 0.06);
   --bg-card-strong: rgba(255, 255, 255, 0.09);
@@ -22,4 +22,21 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+}
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.sidebar-logo img {
+  width: 42px;
+  height: auto;
+}
+
+.sidebar-logo h2 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
