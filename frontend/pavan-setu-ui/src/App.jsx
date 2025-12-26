@@ -1,234 +1,156 @@
 
 
 // import { useState } from "react";
+// import { Chart } from "react-google-charts";
 // import "./theme/theme.css";
+// import MockAQIMap from "./components/MockAQIMap";
+// import GeminiAssistant from "./components/GeminiAssistant";
+
+// const aqiData = [
+//   ["Hour", "AQI"],
+//   ["6 AM", 180],
+//   ["9 AM", 195],
+//   ["12 PM", 210],
+//   ["3 PM", 225],
+//   ["6 PM", 215],
+//   ["9 PM", 205],
+// ];
 
 // export default function App() {
-//   const [theme, setTheme] = useState("dark");
-
-//   const toggleTheme = () => {
-//     setTheme(theme === "dark" ? "light" : "dark");
-//   };
+//   const [theme, setTheme] = useState("light");
 
 //   return (
-//     <div
-//       data-theme={theme}
-//       style={{
-//         backgroundColor: "var(--bg-main)",
-//         minHeight: "100vh",
-//         color: "var(--text-main)",
-//         padding: "24px",
-//         fontFamily: "system-ui",
-//       }}
-//     >
-//       {/* HEADER */}
-//       <div style={{ display: "flex", justifyContent: "space-between" }}>
-//         <h1>🌿 PAVAN SETU</h1>
+//     <div data-theme={theme} style={styles.app}>
+//       {/* SIDEBAR */}
+//       <aside style={styles.sidebar}>
+//         <h2>🌿 PAVAN SETU</h2>
+//         {["Dashboard", "City AQI", "Forecast", "Policy Simulation", "AI Assistant"].map(
+//           (i) => (
+//             <div key={i} style={styles.nav}>{i}</div>
+//           )
+//         )}
+//       </aside>
 
-//         <button
-//           onClick={toggleTheme}
-//           style={{
-//             background: "var(--bg-card)",
-//             color: "var(--text-main)",
-//             border: "none",
-//             borderRadius: "8px",
-//             padding: "8px 14px",
-//             cursor: "pointer",
-//           }}
-//         >
-//           {theme === "dark" ? "🌞 Light" : "🌙 Dark"}
-//         </button>
-//       </div>
+//       {/* MAIN */}
+//       <main style={styles.main}>
+//         <div style={styles.header}>
+//           <h1>Air Quality Dashboard</h1>
+//           <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+//             {theme === "dark" ? "🌞 Light" : "🌙 Dark"}
+//           </button>
+//         </div>
 
-//       {/* KPI CARDS */}
-//       <div style={{ display: "flex", gap: "20px", marginTop: "24px" }}>
-//         <Card title="Current AQI" value="215" status="Poor" />
-//         <Card title="Main Pollutant" value="PM2.5" />
-//         <Card title="24h Forecast" value="225" />
-//       </div>
+//         <div style={styles.cards}>
+//           <Card title="Current AQI" value="215" status="Poor" />
+//           <Card title="Main Pollutant" value="PM2.5" />
+//           <Card title="24h Forecast" value="225" />
+//         </div>
+
+//         <div style={styles.cardLarge}>
+//           <h3>AQI Trend (Today)</h3>
+//           <Chart chartType="LineChart" width="100%" height="300px" data={aqiData} />
+//         </div>
+
+//         {/* MAP + AI GRID */}
+//         <div style={styles.grid}>
+//           <div style={styles.cardLarge}><MockAQIMap /></div>
+//           <div style={styles.cardLarge}><GeminiAssistant /></div>
+//         </div>
+//       </main>
 //     </div>
 //   );
 // }
 
 // function Card({ title, value, status }) {
 //   return (
-//     <div
-//       style={{
-//         backgroundColor: "var(--bg-card)",
-//         padding: "20px",
-//         borderRadius: "16px",
-//         minWidth: "200px",
-//         boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
-//       }}
-//     >
-//       <p style={{ color: "var(--text-muted)" }}>{title}</p>
+//     <div style={styles.card}>
+//       <p>{title}</p>
 //       <h2>{value}</h2>
-//       {status && <p style={{ color: "#ff6b6b" }}>{status}</p>}
+//       {status && <span style={{ color: "#ef4444" }}>{status}</span>}
 //     </div>
 //   );
 // }
 
-import { useState } from "react";
-import { Chart } from "react-google-charts";
-import "./theme/theme.css";
+// const styles = {
+//   app: { display: "flex", minHeight: "100vh" },
+//   sidebar: {
+//     width: "220px",
+//     padding: "20px",
+//     background: "var(--bg-card)",
+//   },
+//   nav: {
+//     marginTop: "16px",
+//     padding: "10px",
+//     borderRadius: "10px",
+//     background: "rgba(255,255,255,0.05)",
+//   },
+//   main: { flex: 1, padding: "24px" },
+//   header: { display: "flex", justifyContent: "space-between" },
+//   cards: { display: "flex", gap: "20px", marginBottom: "40px" },
+//   card: {
+//     background: "var(--bg-card)",
+//     padding: "20px",
+//     borderRadius: "16px",
+//     minWidth: "200px",
+//   },
+//   cardLarge: {
+//     background: "var(--bg-card)",
+//     padding: "24px",
+//     borderRadius: "20px",
+//     marginBottom: "40px",
+//   },
+//   grid: {
+//     display: "grid",
+//     gridTemplateColumns: "2fr 1fr",
+//     gap: "24px",
+//   },
+// };
+
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import KPICard from "./components/KPICard";
+import MockAQIMap from "./components/MockAQIMap";
 import GeminiAssistant from "./components/GeminiAssistant";
-
-
-/* AQI Trend Data */
-const aqiData = [
-  ["Hour", "AQI"],
-  ["6 AM", 180],
-  ["9 AM", 195],
-  ["12 PM", 210],
-  ["3 PM", 225],
-  ["6 PM", 215],
-  ["9 PM", 205],
-];
+import "./theme/theme.css";
 
 export default function App() {
-  const [theme, setTheme] = useState("dark");
-
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
   return (
-    <div data-theme={theme} style={styles.app}>
-      {/* SIDEBAR */}
-      <aside style={styles.sidebar}>
-        <h2 style={{ marginBottom: "32px" }}>🌿 PAVAN SETU</h2>
+    <div style={styles.app}>
+      <Sidebar />
 
-        <nav style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-          <NavItem label="Dashboard" />
-          <NavItem label="City AQI" />
-          <NavItem label="Forecast" />
-          <NavItem label="Policy Simulation" />
-          <NavItem label="AI Assistant" />
-        </nav>
-      </aside>
-
-      {/* MAIN CONTENT */}
       <main style={styles.main}>
-        {/* HEADER */}
-        <div style={styles.header}>
-          <h1>Air Quality Dashboard</h1>
+        <Header />
 
-          <button onClick={toggleTheme} style={styles.themeBtn}>
-            {theme === "dark" ? "🌞 Light" : "🌙 Dark"}
-          </button>
+        <div style={styles.kpiRow}>
+          <KPICard title="Current AQI" value="215" status="Poor" color="var(--accent-red)" />
+          <KPICard title="PM2.5 Level" value="PM2.5" />
+          <KPICard title="Outdoor AQI" value="225" />
+          <KPICard title="Health Advisory" value="Limit Outdoor Activity" />
         </div>
 
-        {/* KPI CARDS */}
-        <div style={styles.cards}>
-          <KPICard title="Current AQI" value="215" status="Poor" />
-          <KPICard title="Main Pollutant" value="PM2.5" />
-          <KPICard title="24h Forecast" value="225" />
-        </div>
-
-        {/* AQI TREND GRAPH */}
-        <div style={styles.graphCard}>
-          <h3 style={{ marginBottom: "16px" }}>AQI Trend (Today)</h3>
-
-          <Chart
-            chartType="LineChart"
-            width="100%"
-            height="300px"
-            data={aqiData}
-            options={{
-              backgroundColor: "transparent",
-              legendTextStyle: { color: "var(--text-muted)" },
-              hAxis: { textStyle: { color: "var(--text-muted)" } },
-              vAxis: { textStyle: { color: "var(--text-muted)" } },
-              colors: ["#ff6b6b"],
-            }}
-          />
-        </div>
+        <MockAQIMap />
+        <GeminiAssistant />
       </main>
     </div>
   );
 }
 
-{/* GEMINI AI ASSISTANT */ }
-<div style={{ marginTop: "40px" }}>
-  <GeminiAssistant />
-</div>
-
-/* Sidebar Item */
-function NavItem({ label }) {
-  return (
-    <div
-      style={{
-        padding: "10px 14px",
-        borderRadius: "10px",
-        cursor: "pointer",
-        background: "rgba(255,255,255,0.05)",
-      }}
-    >
-      {label}
-    </div>
-  );
-}
-
-/* KPI Card */
-function KPICard({ title, value, status }) {
-  return (
-    <div style={styles.card}>
-      <p style={{ color: "var(--text-muted)" }}>{title}</p>
-      <h2>{value}</h2>
-      {status && <p style={{ color: "#ff6b6b" }}>{status}</p>}
-    </div>
-  );
-}
-
-/* Styles */
 const styles = {
   app: {
     display: "flex",
-    backgroundColor: "var(--bg-main)",
+    background: "var(--bg-main)",
     color: "var(--text-main)",
     minHeight: "100vh",
-    fontFamily: "system-ui",
-  },
-  sidebar: {
-    width: "240px",
-    padding: "24px",
-    background: "var(--bg-card)",
   },
   main: {
     flex: 1,
-    padding: "24px",
+    padding: "32px",
   },
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "24px",
-  },
-  themeBtn: {
-    background: "var(--bg-card)",
-    border: "none",
-    padding: "8px 14px",
-    borderRadius: "8px",
-    color: "var(--text-main)",
-    cursor: "pointer",
-  },
-  cards: {
+  kpiRow: {
     display: "flex",
     gap: "20px",
+    marginBottom: "40px",
     flexWrap: "wrap",
   },
-  card: {
-    background: "var(--bg-card)",
-    padding: "20px",
-    borderRadius: "16px",
-    minWidth: "220px",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
-  },
-  graphCard: {
-    marginTop: "40px",
-    background: "var(--bg-card)",
-    padding: "24px",
-    borderRadius: "18px",
-    boxShadow: "0 10px 25px rgba(0,0,0,0.15)",
-  },
 };
+

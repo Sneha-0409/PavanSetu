@@ -1,17 +1,25 @@
-/* DEFAULT = DARK THEME */
 :root {
-  --bg-main: #0b0f14;
-  --bg-card: #121821;
-  --text-main: #e6edf3;
-  --text-muted: #8a94a6;
-  --accent-green: #7ddc7a;
-  --accent-yellow: #ffd166;
+  --bg-main: radial-gradient(
+    circle at top left,
+    #1b3a2b,
+    #050a08 55%
+  );
+  --bg-card: rgba(255, 255, 255, 0.06);
+  --bg-card-strong: rgba(255, 255, 255, 0.09);
+  --bg-sidebar: rgba(255, 255, 255, 0.08);
+
+  --border-soft: rgba(255, 255, 255, 0.12);
+  --text-main: #e9f5ee;
+  --text-muted: #9fb8aa;
+
+  --accent-green: #6dff8b;
+  --accent-yellow: #f7c948;
+  --accent-red: #ff6b6b;
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  * {
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* LIGHT THEME */
-[data-theme="light"] {
-  --bg-main: #f5f7fa;
-  --bg-card: #ffffff;
-  --text-main: #0b0f14;
-  --text-muted: #5f6c7b;
 }
