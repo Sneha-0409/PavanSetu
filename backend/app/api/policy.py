@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from backend.app.models.policy_simulator import simulate_policy
+from app.models.policy_simulator import simulate_policy
 
 router = APIRouter()
 

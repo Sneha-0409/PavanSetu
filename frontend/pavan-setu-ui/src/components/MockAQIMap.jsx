@@ -1,64 +1,84 @@
 export default function MockAQIMap() {
-    const cities = [
-        { name: "Delhi", aqi: 215, color: "#ef4444" },
-        { name: "Mumbai", aqi: 165, color: "#f59e0b" },
-        { name: "Kolkata", aqi: 190, color: "#f59e0b" },
-        { name: "Bengaluru", aqi: 110, color: "#22c55e" },
-    ];
+  const cities = [
+    { name: "Delhi", aqi: 215, color: "#ef4444" },
+    { name: "Mumbai", aqi: 165, color: "#f59e0b" },
+    { name: "Kolkata", aqi: 190, color: "#f59e0b" },
+    { name: "Bengaluru", aqi: 110, color: "#22c55e" },
+  ];
 
-    return (
-        <>
-            <h3>City AQI Map</h3>
-            <p style={{ color: "var(--text-muted)", marginBottom: "16px" }}>
-                Google Maps–ready AQI visualization (mocked)
-            </p>
+  return (
+    <div style={styles.container}>
+      <h3 style={styles.heading}>City AQI Map</h3>
+      <p style={styles.subtext}>
+        Google Maps–ready AQI visualization (mocked)
+      </p>
 
-            <div style={styles.map}>
-                {cities.map((c) => (
-                    <div
-                        key={c.name}
-                        style={{
-                            ...styles.marker,
-                            background: c.color,
-                        }}
-                    >
-                        {c.name} · {c.aqi}
-                    </div>
-                ))}
-            </div>
+      <div style={styles.map}>
+        {cities.map((c) => (
+          <div
+            key={c.name}
+            style={{
+              ...styles.marker,
+              backgroundColor: c.color,
+            }}
+          >
+            {c.name} · {c.aqi}
+          </div>
+        ))}
+      </div>
 
-            <div style={styles.legend}>
-                <span>🟥 Poor</span>
-                <span>🟨 Moderate</span>
-                <span>🟩 Good</span>
-            </div>
-        </>
-    );
+      <div style={styles.legend}>
+        <span>🟥 Poor</span>
+        <span>🟨 Moderate</span>
+        <span>🟩 Good</span>
+      </div>
+    </div>
+  );
 }
 
 const styles = {
-    map: {
-        height: "260px",
-        borderRadius: "20px",
-        background: "linear-gradient(180deg, #0d1a16, #07110d)",
-        border: "1px solid rgba(255,255,255,0.08)",
-        boxShadow: "inset 0 0 40px rgba(0,0,0,0.6)",
-        display: "flex",
-        justifyContent: "space-around",
-        alignItems: "center",
-    },
-    marker: {
-        padding: "8px 14px",
-        borderRadius: "999px",
-        fontSize: "14px",
-        fontWeight: 600,
-        color: "#020617",
-    },
-    legend: {
-        display: "flex",
-        gap: "16px",
-        marginTop: "12px",
-        fontSize: "14px",
-        color: "var(--text-muted)",
-    },
+  container: {
+    background: "#ffffff",
+    borderRadius: "16px",
+    padding: "20px",
+    marginTop: "24px",
+    boxShadow: "0 8px 20px rgba(0,0,0,0.08)",
+  },
+
+  heading: {
+    margin: 0,
+    fontSize: "18px",
+    fontWeight: 600,
+    color: "#111827",
+  },
+
+  subtext: {
+    color: "#6b7280",
+    fontSize: "14px",
+    marginBottom: "16px",
+  },
+
+ map: {
+    background: "#ffffff",
+    borderRadius: "18px",
+    padding: "24px",
+    boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+},
+
+  marker: {
+    padding: "10px 16px",
+    borderRadius: "999px",
+    fontSize: "14px",
+    fontWeight: 600,
+    color: "#ffffff",
+    boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
+  },
+
+  legend: {
+    display: "flex",
+    gap: "18px",
+    marginTop: "14px",
+    fontSize: "14px",
+    color: "#374151",
+  },
 };

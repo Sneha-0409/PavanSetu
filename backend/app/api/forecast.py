@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from backend.app.models.aqi_forecasting import forecast_aqi
+from app.models.aqi_forecasting import forecast_aqi
 
 router = APIRouter()
 

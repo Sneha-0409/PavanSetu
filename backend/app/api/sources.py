@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from backend.app.models.source_attribution import get_source_contribution
+from app.models.source_attribution import get_source_contribution
+
 
 router = APIRouter()
 

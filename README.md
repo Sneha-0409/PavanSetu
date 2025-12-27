@@ -58,10 +58,21 @@ here this works: http://127.0.0.1:8000/api/aqi
 
 11. Frontend - Dashboard
 Install frontend libraries
-
-Run this from project root:
-pip install streamlit requests plotly
+install vite
 
 12. Install dependency
 Run this inside pavan-setu-ui:
 npm install react-google-charts
+
+13. INSTALL MAPS LIBRARY
+From: frontend/pavan-setu-ui
+Run:
+npm install @react-google-maps/api
+
+14. Create an API Key - https://makersuite.google.com/app/apikey
+
+15. Inside backend folder:
+pip install google-generativeai python-dotenv
+
+16. integrating real time gemini
+pip install google-generativeai
